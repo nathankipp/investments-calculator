@@ -2,6 +2,7 @@ const readline = require("readline");
 const _ = require("lodash");
 const Market = require("./Market");
 const Accounts = require("./Accounts");
+const { multiplier, outflows, inflows, sum, sortAndJoin } = require("./lib");
 
 function createStore() {
   return {
@@ -10,10 +11,10 @@ function createStore() {
   };
 }
 
-const multiplier = w => (w === "SELL" || w === "DOWN" ? -1 : 1);
 function processLine(command, { market, accounts }) {
   const words = command.split(" ");
   let ticker, price;
+
   switch (words[1]) {
     case "PRICE":
       ticker = words[2];
@@ -43,16 +44,16 @@ function processLine(command, { market, accounts }) {
       accounts.placeOrder({ owner, order, ticker, price });
       break;
   }
+
   return { market, accounts };
 }
 
-const outflows = v => v < 0;
-const inflows = v => v > 0;
-const sum = (a, v) => a + v;
 function displayAccounts({ market, accounts }) {
+  const summaries = [];
+
   const holdingsValues = (net, shares, ticker) =>
     net.push(shares * market.getPrice(ticker));
-  const summaries = [];
+
   _.forIn(accounts.records, (account, name) => {
     const expenses = account.transactions.filter(outflows).reduce(sum, 0) * -1;
     const proceeds = account.transactions.filter(inflows).reduce(sum, 0);
@@ -68,7 +69,7 @@ function displayAccounts({ market, accounts }) {
       )}% RETURN`
     );
   });
-  return summaries.sort((a, b) => a.localeCompare(b)).join("\n");
+  return sortAndJoin(summaries);
 }
 
 /* istanbul ignore if */
@@ -78,8 +79,10 @@ if (process.env.NODE_ENV !== "TEST") {
     input: process.stdin,
     output: process.stdout
   });
+  rl.prompt(">");
   rl.on("line", line => {
     store = processLine(line, store);
+    rl.prompt(">");
   });
   rl.on("close", () => {
     console.log("---");
