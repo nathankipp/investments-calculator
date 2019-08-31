@@ -1,19 +1,17 @@
-# investments-calculator: a coding challenge
-nathan kipp | [nskipp@gmail.com](mailto:nskipp@gmail.com)
+# investments-calculator: a coding kata
 
----
+### The kata asks you to:
+__Write a program that takes in three (3) types of string commands from `STDIN`__
 
-### The challenge I was given was as follows:
-__Write a program that takes in three (3) types of string commands from stdin__  
-  1. INITIAL PRICE [TICKER] $[PRICE]  
-  2. [INVESTOR] [BUY|SELL] [NUMBER] [TICKER]  
-  3. [TICKER] [UP|DOWN] [$VALUE|PERCENT%]  
+  1. ```INITIAL PRICE [TICKER] $[PRICE]```  
+  2. ```[INVESTOR] [BUY|SELL] [NUMBER] [TICKER]```  
+  3. ```[TICKER] [UP|DOWN] [$VALUE|PERCENT%]```  
 
-__On EOF, output (to stdout) an alpha-ordered summary of investment results__  
+__On EOF output (to `STDOUT`) a list, ordered by investor name, of portfolio returns__  
 
-[INVESTOR] SPENT $[DOLLARS_OUT] AND ENDED WITH [ENDING_VALUE], A [PERCENT]% RETURN
+```[INVESTOR] SPENT $[DOLLARS_OUT] AND ENDED WITH $[ENDING_VALUE], A [PERCENT]% RETURN```
 
-#### For the purpose of this challenge I was allows to assume that:
+#### For the purpose of this kata you can assume that:
   1. Only well-formatted commands will be entered
   2. Initial price commands always come first, and never again
   3. Commands can be considered to appear in chronological order
