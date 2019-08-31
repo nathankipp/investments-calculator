@@ -4,7 +4,7 @@ nathan kipp | [nskipp@gmail.com](mailto:nskipp@gmail.com)
 ---
 
 ### The challenge I was given was as follows
-* Write a program that takes in three (3) types of string commands from stdin
+* Write a program that takes in three (3) types of string commands from stdin  
   1. INITIAL PRICE [TICKER] $[PRICE]  
   2. [INVESTOR] [BUY|SELL] [NUMBER] [TICKER]  
   3. [TICKER] [UP|DOWN] [$VALUE|PERCENT%]  
