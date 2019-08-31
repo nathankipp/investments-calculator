@@ -5,9 +5,9 @@ nathan kipp | [nskipp@gmail.com](mailto:nskipp@gmail.com)
 
 ### The challenge I was given was as follows
 * Write a program that takes in three (3) types of string commands from stdin
-  1. INITIAL PRICE [TICKER] $[PRICE]
-  2. [INVESTOR] [BUY|SELL] [NUMBER] [TICKER]
-  3. [TICKER] [UP|DOWN] [$VALUE|PERCENT%]
+  1. INITIAL PRICE [TICKER] $[PRICE]  
+  2. [INVESTOR] [BUY|SELL] [NUMBER] [TICKER]  
+  3. [TICKER] [UP|DOWN] [$VALUE|PERCENT%]  
 * On EOF, output (to stdout) an alpha-ordered summary of investment results
   * eg: [INVESTOR] SPENT $[DOLLARS_OUT] AND ENDED WITH [ENDING_VALUE], A [PERCENT]% RETURN
 
